@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const indexRouter = require("./routes/index");
 require("dotenv").config();
 
 const app = express();
@@ -14,6 +15,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // JSON 데이터 파싱 미들웨어
 app.use(bodyParser.json());
+
+// index 라우터
+app.use("/api", indexRouter);
 
 const mongoURL = process.env.MONGODB_LOCAL;
 
